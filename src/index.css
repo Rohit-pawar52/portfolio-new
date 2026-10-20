@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* Dark mode is toggled by adding the "dark" class to <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme colors are CSS variables so light/dark swap in one place */
+:root {
+  --c-bg: #f5efe3;
+  --c-surface: #fbf8f1;
+  --c-ink: #1c1a17;
+  --c-muted: #5b554c;
+  --c-line: #e2d8c6;
+  --c-accent: #9c4221;
+  --c-accent-soft: #efe0cf;
+  color-scheme: light;
+}
+
+.dark {
+  --c-bg: #141311;
+  --c-surface: #1d1b18;
+  --c-ink: #f2ece0;
+  --c-muted: #aba395;
+  --c-line: #2f2c27;
+  --c-accent: #e3936a;
+  --c-accent-soft: #2c211a;
+  color-scheme: dark;
+}
+
+@theme {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Offset anchor jumps so headings are not hidden under the sticky navbar */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--c-accent);
+    color: var(--c-bg);
+  }
+}
+
+/* Subtle dot grid behind the hero, fading out toward the edges */
+.hero-grid {
+  background-image: radial-gradient(var(--c-line) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 70% 60% at 30% 40%, #000 30%, transparent 75%);
+}
