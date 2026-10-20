@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,11 +7,22 @@
     <title>Mukesh Pawar | DevOps &amp; DevSecOps Engineer</title>
     <meta
       name="description"
-      content="Mukesh Pawar, DevOps & DevSecOps Engineer in Gurugram. 8 years in IT, with Azure DevOps, Terraform, Docker and CI/CD pipeline automation."
+      content="Mukesh Pawar, DevOps & DevSecOps Engineer in Gurugram with 5+ years in DevOps: Azure DevOps, Terraform, Docker, Kubernetes and CI/CD automation."
     />
     <meta name="author" content="Mukesh Pawar" />
-    <meta name="theme-color" content="#F5EFE3" />
+    <!-- One theme-color only: ThemeToggle.jsx updates it when the visitor switches theme -->
+    <meta name="theme-color" content="#0D0D0E" />
+    <!-- TODO: after your first Netlify deploy, put your real address here and uncomment it
+         (also update public/sitemap.xml and uncomment the Sitemap line in public/robots.txt).
+    <link rel="canonical" href="https://YOUR-SITE.netlify.app/" />
+    -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Start downloading the two fonts the first screen needs (headings + body text) right away -->
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
 
     <!--
       TODO: after your first Netlify deploy, replace "/og-image.jpg" and the
@@ -51,12 +62,46 @@
       }
     </script>
 
-    <!-- Apply saved theme before first paint to avoid a flash. Light (cream) is the default. -->
-    <script>
-      try {
-        if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");
-      } catch (e) {}
-    </script>
+    <!-- Apply saved theme before first paint to avoid a flash. Dark is the default; light = cream theme.
+         Kept on one line on purpose: public/_headers allows it by its sha256 hash (Content-Security-Policy).
+         If you change this script, update that hash too, or the browser will block it. -->
+    <script>try{if(localStorage.getItem("theme")==="light")document.documentElement.classList.remove("dark")}catch(e){}</script>
+
+    <!-- Self-hosted fonts (latin subset only, files in public/fonts). Family names match the @theme fonts in src/index.css. -->
+    <style>
+      @font-face {
+        font-family: "Bricolage Grotesque Variable";
+        font-style: normal;
+        font-display: swap;
+        font-weight: 200 800;
+        src: url("/fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Inter Variable";
+        font-style: normal;
+        font-display: swap;
+        font-weight: 100 900;
+        src: url("/fonts/inter-latin-wght-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "JetBrains Mono Variable";
+        font-style: normal;
+        font-display: swap;
+        font-weight: 100 800;
+        src: url("/fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Instrument Serif";
+        font-style: italic;
+        font-display: swap;
+        font-weight: 400;
+        src: url("/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

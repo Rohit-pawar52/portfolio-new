@@ -1,0 +1,28 @@
+# Netlify response headers (https://docs.netlify.com/routing/headers/)
+
+# Security headers for every response
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# The page itself: always revalidate, so a new deploy shows up right away
+# (a cached old page would point at old /assets files that no longer exist).
+# CSP: the sha256 below allows the one-line theme script in index.html. If you edit that
+# script, put the new hash here. 'unsafe-inline' for styles covers the @font-face <style>
+# in index.html and the <style> tag framer-motion adds for AnimatePresence "popLayout".
+/
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-m5fV8Cf+Z8JhlrUmKrAsZCecD/M7HO/paJPmNpU929c='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-m5fV8Cf+Z8JhlrUmKrAsZCecD/M7HO/paJPmNpU929c='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+
+# Vite's build files have a content hash in their names, so they can be cached for a year
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts are cached for a year too: if you ever replace a font, give the file a new name
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+
+# TODO: after your first Netlify deploy, replace YOUR-SITE with your real address
+# (same placeholder in index.html <link rel="canonical"> and public/sitemap.xml).
+# Sitemap: https://YOUR-SITE.netlify.app/sitemap.xml
